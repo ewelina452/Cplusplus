@@ -1,0 +1,59 @@
+Sposób realizacji projektu: temat 2.
+
+-------------------------------------------------------------ETAP 1------------------------------------------------------------------------------------------
+
+Pisanie kodu rozpoczęłam od stworzenia klasy napój, w której umieściłam wymagane obiekty:
+nazwa napoju, numer id oraz cenę. Są one prywatne.
+
+Następnie jako publiczny dodałam konstruktor Napój wraz z destruktorem.
+
+Następnie utworzyłam klase Automat wraz z obiektem liczby napoi- tablicy czteroelementowej, 
+w której indeks tablicy odpowiada poszególnym napojom,na podstawie numeru id.
+Obie klasy zaprzyjaźniłamze sobą poprzez dodanie odpowidnich bibliotek oraz poleceń.
+W klasie Automat zadeklarowałam obiekty klasy Napój, a ich wartości przypisałam w konstruktorze Automat.
+Klasa ta zawiera także wszystkie potrzebne metody użyte w programie.
+(To jest własnie głowny powód, dlaczego zdecydowałam sie na zaprzyjaźnienie obu tych klas).
+Klasy znajdują się odpowiednio w pliku Napoj.h oraz Automat.h
+
+Następnie przeszłam do pisania funkcji.
+Dzięki zaprzyjażnionym klasom mogłam bez problemu odwoływać się do ich obiektów.
+W metodzie ilosc_cena wypisywana jest zawartość automatu. Zawiera jedynie komedny wypisujące, więc 
+ta część jest dość prosta.
+
+Kolejno zajełam się sposobem wybierania napoju, jaki chce użytkownik. 
+Stwierdziłam, że najepiej jest to zrobić za pomocą switcha. 
+Użytkownik poprzez podanie konkretnego numeru napoju, który jest ustalony, zostaje przeniesiony
+do odpowiednich sekcji. Na początku oczywiście sprawdzam czy napój jest dotępny, jesli tak to jest możliwość 
+zakupu, jeśli nie to pojawia się komunikat że napój nie jest dotępny (tytaj użyłam stałej napis, aby
+uniknąć ciągłego pisania tego samego zdania).
+W czasie wykonywania się metody wybierz_napoj użyta jest także metoda wrzuc_monete, która odpowiedzialna 
+jest za sprawdzenie ceny, poprawności nominału, czy też odejmuje wrzuconą monetę. Na koniec ilość wybraego
+napoju jest zmniejszana o 1. Wszytkie metody są w pliku Automat.cpp
+
+Wreszcie po napisaniu metod, mogłam przejść do pliku main.cpp, gdzie również posłużyłam się switchem.
+Automat po uruchomieniu prezentuje dostępne napoje oraz 2 opcje zawarte w menu: możliwość wyboru i zakup oraz wyjscie.
+W poszczególnych sektorach switcha umieszczone są metody, zgodnie z kolejnością działań. 
+Automat jest uruchomiony do momentu kliknięcia 2- Wyjście.
+
+-------------------------------------------------------------ETAP 2---------------------------------------------------------------------------------------
+W etapie 2 utworzyłam dwie klasy: Platnosc oraz Sposob_platnosci, ktora to klasa dziedziczy z klasy Platnosc.
+W klasie Sposob_platnosci umiescilam metody zwiazane z platnoscia, czyli gotowka(), karta(), oraz BLIK(). Metode wybierz_zaplac() z klasy Automat
+z wczesniejszego etapu zamienilam na gotowke() i przeniosłam do klasy Sposob_platnosci, ponieważ uznałam, że metody platnosci lepiej 
+bedzie mieć w jednym miejscu. Tutaj również skorzystałam z przyjaźni. Zaprzyjaźniłam klasę Napoj z klasą Sposob_platnosci. 
+Klasa automat natomiast dziedzczy po klasie Sposob_platnosci.
+
+W metodzie zaplac() w klasie Platnosc użyłam switcha, który pozwala na wybór przez użytkownika sposobu, w jaki chce zapłacić.
+Dodano także możliwość czytania z pliku. 
+
+-------------------------------------------------------------ETAP 3-----------------------------------------------------------------------------------------
+w etapie 3 należało dodać do programu obsługę wyjątków oraz szablon.
+Do obsługi wyjtków stworzyłam osobny plik .h, w którym jest struktura Wyjatek, w której konstruktor odpowiedzialny jest za wyświetlenie ostrzeżenia.
+W tym samym pliku dodałam klase czy_blad, w której znalazły się metody odpowiedzialne za sprawdzanie warunku. Są to: wyjatek_platnosc, wyjatek_wybor oraz
+wyjatek_start. Bloki try oraz catch umieściłam odpowiednio w miejscu, gdzie chcę, aby warunek był sprawdzany. Złapany wyjątek wyświetlany 
+Jako szablon utworzyłam w osobnym pliku .h klasę tzw. Kontener, w którym znajduje się obiekt tab, który posłużył do zadeklarowania liczby napoi
+w klasie Automat. Dodatkowo w klasie Kontener jest sprawdzanie, czy podany przez użytkownika numer ID mieści się w zakresie tablicy liczba_napoi, 
+jeśli nie to pojawi się komunkat o niepoprawnym numerze.
+Ten etap także posiada możliwość wczytywania wyboru z pliku.
+
+
+
